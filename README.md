@@ -171,3 +171,38 @@ A system call is a way for programs to interact with the operating system
 
 ---
 ---
+
+
+# Threads & Multithreading
+
+### Thread
+- Component of process
+- Lightweight Process
+- Provide a way to improve application performance through parallelism
+
+|Shared Among Threads   | Unique For Each Thread|
+|-----------------------|-----------------------|
+|Code Section           | Thread Id             |
+|Data Section           | Register Set          |
+|OS Resources           | Stack                 |
+|Open Files & Signals   | Program Counter       |
+
+![](https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/images/Chapter4/4_01_ThreadDiagram.jpg)
+
+### Types of Threads
+|User Threads|Kernel Thread|
+|-|-|
+|Multithreading in user process|Multithreading in kernel process|
+|Created without kernel intervention|Kernel itself is multithreaded|
+|Context switch is very fast|Context switch is slow|
+|If one thread is blocked, OS blocks entire process|Individual thread can be blocked|
+|Generic and can run on any OS|Specific to OS|
+|Faster to create and manage|Slower to create and manage|
+
+### Multi-threading Models in OS
+
+![](https://i.ibb.co/P9LRFfW/multi-threading-models-in-os.png)
+
+---
+---
+
