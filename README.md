@@ -110,4 +110,63 @@ A system call is a way for programs to interact with the operating system
 - **Short-Term Scheduler**: Ready → Running
 - **Medium-Term Scheduler**: Ready/Waiting ↔ Suspended
 
+## CPU Scheduling Algorithms
 
+### **Scheduling Times**
+1. **Arrival Time (AT):** The time at which the process arrives in the system.
+2. **Burst Time (BT):** The amount of time for which the process runs on the CPU.
+3. **Completion Time (CT):** The time at which the process completes (exit time).
+4. **Turnaround Time (TAT):** Time from arrival to completion.**Formula:** $\text{TAT} = \text{CT} - \text{AT}$
+5. **Waiting Time (WT):** The time the process spends waiting in the ready queue. **Formula:** $\text{WT} = \text{TAT} - \text{BT}$
+6. **Response Time (RT):**  The amount of time from the arrival of a process until it gets the CPU for the first time.
+7. **Scheduling Length (L):**  The total time required to complete all processes.  **Formula:**  $L = \max(\text{CT}) - \min(\text{AT})$
+8. **Throughput:**  The number of processes executed per unit of time.
+
+### **First Come First Serve (FCFS)**
+- **Criteria** - Arrival Time
+- **Tie reaker** - Smaller process id
+- **Type** - Non-Preemptive
+
+### **Sortest Job First (SJF)**
+- **Criteria** - Burst Time
+- **Tie reaker** - FCFS
+- **Type** - Non-Preemptive
+
+### **Sortest Remaining Time First (SRTF)**
+- **Criteria** - Remaining Time
+- **Tie reaker** - FCFS
+- **Type** - Preemptive
+
+### **Highest Response Ration Next**
+- **Criteria** - Highest Response Ration = 1 + WT/BT
+- **Tie reaker** - Burst Time
+- **Type** - Non-Preemptive
+
+### **Priority Based Scheduling**
+- **Criteria** - Priority
+- **Tie reaker** - FCFS
+- **Type** - Preemptive and Non-Preemptive
+
+### **Round-Robin Scheduling**
+- Processes are queued in the ready queue in the order they arrive.- If multiple processes arrive simultaneously, the Process ID determines the order.
+- The process at the front of the queue is executed for a fixed time quantum (*Q*).
+- If the process isn’t completed within this time, it is re-queued at the back of the queue (after enqueuing any new arrivals).
+
+### Quantum values in Round-Robin scheduling
+- **Small $Q$:** Interactive
+- **Very Large $Q$:** similarly to FCFS (First Come First Serve)
+- **Large $Q$:** Less  Interactive
+- **Very Small $Q$:** CPU spends more time in context switching than in actual execution, reducing CPU efficiency
+
+### **Multilevel Queue Scheduling**
+1. **Fixed Priority preemptive Scheduling method**- 
+
+   ![](https://media.geeksforgeeks.org/wp-content/uploads/multilevel-queue-schedueling-1-300x217.png)
+3. **Time Slicing**- (Q1, 60%) , (Q2, 30%) , (Q3, 10%) 
+
+### **Multilevel Feedback Queue Scheduling**
+![](https://media.geeksforgeeks.org/wp-content/uploads/Multilevel-Feedback-Queue-Scheduling-300x269.png)
+- If a process do not get completed in one Q time it is moved to lower priority queue
+
+---
+---
