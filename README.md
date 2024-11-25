@@ -237,27 +237,27 @@ A race condition is an undesirable situation, it occurs when the final result of
 
 <table>
 <tr>
-    <th>P1
+    <th>P0
     </th>
-    <th>P2
+    <th>P1
     </th>
 </tr>
 <tr>
   <td>
   <pre>
-while(lock)
-lock = True
-CS
-lock = False
+while(lock);
+lock = True;
+CS;
+lock = False;
 </pre>
 
   </td>
   <td>
     <pre>
-while(lock)
-lock = True
-CS
-lock = False
+while(lock);
+lock = True;
+CS;
+lock = False;
 </pre>
 
   </td>
@@ -272,25 +272,25 @@ lock = False
 
 <table>
 <tr>
-    <th>P1
+    <th>P0
     </th>
-    <th>P2
+    <th>P1
     </th>
 </tr>
 <tr>
   <td>
   <pre>
-while(turn == True)
-CS
-turn = False
+while(turn == True);
+CS;
+turn = False;
 </pre>
 
   </td>
   <td>
     <pre>
-while(turn == False)
-CS
-turn = True
+while(turn == False);
+CS;
+turn = True;
 </pre>
 
   </td>
@@ -301,4 +301,45 @@ turn = True
 - **Mutual Exclusion** - Yes 
 - **Progress** - No
 - **Bounded Waiting** - Yes
+
+
+### Peterson's Solution
+<table>
+    <tr>
+        <th>
+            P0
+        </th>
+        <th>
+            P1
+        </th>
+    </tr>
+    <tr>
+     <td colspan = 2>Flag[0] = False, Flag[1] = False</td>
+    </tr>
+    <tr>
+        <td>
+<pre>
+Flag[0] = True;
+turn = 1;
+while(flag[1] && turn = 1);
+CS;
+Flag[0] = False;
+</pre>
+        </td>
+        <td>
+<pre>
+Flag[1] = True;
+turn = 0;
+while(flag[0] && turn = 0);
+CS;
+Flag[1] = False;
+</pre>
+        </td>
+    </tr>
+</table>
+
+- **Mutual Exclusion** - Yes 
+- **Progress** - Yes
+- **Bounded Waiting** - Yes
+
 
