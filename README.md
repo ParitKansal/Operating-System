@@ -67,7 +67,8 @@ A system call is a way for programs to interact with the operating system
 - Locus of control (OS)
 
 ### Representaion of Process
-![](https://icarus.cs.weber.edu/~dab/cs1410/textbook/4.Pointers/images/layout.png)
+![](https://i.ibb.co/B2nYVwz/Process-structure.png)
+
 
 ### Process Control Block
 - Also Known as process descriptor
