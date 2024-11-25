@@ -1,3 +1,4 @@
+ 
 
 # Operating System
 ---
@@ -205,4 +206,99 @@ A system call is a way for programs to interact with the operating system
 
 ---
 ---
+
+
+# Process Synchronization & Deadlock
+
+#### **Types of Processes**
+1. **Independent** - None communication with any other process
+2. **Cooperating/Coordinating/Communicating** - Can affect be other process or can be affected by other Can process.
+
+#### **Problems without Synchronization:**
+- Inconsistency
+- Loss of Data
+- Deadlock
+
+#### **Critical Section**
+The critical section is a code segment where the shared variables can be accessed
+
+#### **Race Condition** 
+A race condition is an undesirable situation, it occurs when the final result of concurrent processes depends on the sequence in which the processes complete their execution.
+
+
+## Solution for Critical Section Problem
+
+#### **Requirements of Critical Section problem solution**:
+1. **Mutual Exclusion** - If one process use that critical section then other process can not use that critical section
+2. **Progress** - of no process is in critical section and at least 1 process wants to enter or exess critical section then it should be allowed
+3. **Bounded Waiting** - Waiting of processes should be Bounded
+
+### Using Lock
+
+<table>
+<tr>
+    <th>P1
+    </th>
+    <th>P2
+    </th>
+</tr>
+<tr>
+  <td>
+  <pre>
+while(lock)
+lock = True
+CS
+lock = False
+</pre>
+
+  </td>
+  <td>
+    <pre>
+while(lock)
+lock = True
+CS
+lock = False
+</pre>
+
+  </td>
+</tr>
+
+</table>
+
+- **Mutual Exclusion** - No 
+- **Progress** - Yes
+
+### Using Turn
+
+<table>
+<tr>
+    <th>P1
+    </th>
+    <th>P2
+    </th>
+</tr>
+<tr>
+  <td>
+  <pre>
+while(turn == True)
+CS
+turn = False
+</pre>
+
+  </td>
+  <td>
+    <pre>
+while(turn == False)
+CS
+turn = True
+</pre>
+
+  </td>
+</tr>
+
+</table>
+
+- **Mutual Exclusion** - Yes 
+- **Progress** - No
+- **Bounded Waiting** - Yes
 
