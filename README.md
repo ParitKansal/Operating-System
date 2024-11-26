@@ -3,7 +3,7 @@
 # Operating System
 ---
 ---
-# Introduction
+# **Introduction**
 
 ### What is OS
 - Software abstracting hardware
@@ -58,7 +58,7 @@ A system call is a way for programs to interact with the operating system
 ---
 ---
 
-# Process Management
+# **Process Management**
 
 ### What is the Process?
 - Program under execution
@@ -174,7 +174,7 @@ A system call is a way for programs to interact with the operating system
 ---
 
 
-# Threads & Multithreading
+# **Threads & Multithreading**
 
 ### Thread
 - Component of process
@@ -208,7 +208,7 @@ A system call is a way for programs to interact with the operating system
 ---
 
 
-# Process Synchronization
+# **Process Synchronization**
 
 #### **Types of Processes**
 1. **Independent** - None communication with any other process
@@ -459,4 +459,93 @@ Signal(S);
 - Solution using semaphore can be busy waiting solutions
 - Semaphores may lead to a priority inversion
 - Semaphores are machine-independent
+
+---
+---
+
+# **Classical Problems on Synchronization**
+
+## **Bounded Buffer**
+![](https://www2.it.uu.se/education/course/homepage/os/vt20/images/module-4/bounded-buffer-medium-details.png?width=555px)
+- Producers must block if the buffer is full
+- Consumers must block if the buffer is empty
+
+#### **Variables**:
+- **Mutex**: Binary Semaphore to take lock on buffer (Mutual Exclusion)
+- **Full**: Counting Semaphore to to denote the number of Foccupied slots in buffer
+- **Empty**: Counting Semaphore to denote the number of empty slots in buffer
+
+#### **Initialization**
+**Mutex** = 1, **Full** = 0, **Empty** = N
+
+<table>
+<td>
+<pre>
+Producer(){
+    Wait(empty)
+    // Produce an item
+    Wait(Mutex)
+    // Add item to buffer
+    Signal(Mutex)
+    Signal(full)
+}
+</pre>
+</td>
+<td>
+<pre>
+Consumer(){
+    Wait(full)
+    Wait(Mutex)
+    // Remove an item to buffer
+    Signal(Mutex)
+    // Consume an item
+    Signal(empty)
+}
+</pre>
+</td>
+</table>
+
+---
+
+## **Reader-Writer Problem**
+Consider a situation where we have a file shared between many people: 
+- If one of the people tries editing the file, no other person should be reading or writing at the same time, otherwise changes will not be visible to him/her
+- However, if some person is reading the file, then others may read it at the same time
+
+#### **Variables**
+- **mutex**: Binary Semaphore to provide Mutual Exclusion
+- **wrt**: Binary Semaphore to restrict readers and writers if writing is going on
+- **readcount**: Integer variable, denotes number of active readers
+
+#### **Initialization**:
+**mutex**: 1, **wrt**: 1, **readcount**: 0
+
+<table>
+<td>
+<pre>
+Writer(){
+    Wait(wrt)
+    // Preform writting
+    Signal(wrt)
+}
+</pre>
+</td>
+<td>
+<pre>
+Reader(){
+    Wait(mutex)
+        readcount++;
+        if(readcount == 1)
+            Wait(wrt)
+    signal(mutex)
+    // Perform Reading
+    Wait(mutex)
+        readcount--;
+        if(readcount == 0)
+            signal(wrt)
+    Signal(Mutex)
+}
+</pre>
+</td>
+</table>
 
