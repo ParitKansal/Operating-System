@@ -1,5 +1,3 @@
-
-
 # Operating System
 ---
 ---
@@ -549,3 +547,45 @@ Reader(){
 </td>
 </table>
 
+===
+
+## **Dining Philosopher**
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4rExdMYrwSEnrW_7lgJIXAMQJTVwPrBlQHQ&s)
+- K philosophers seated around a circular table
+- There is one chopstick between each philosopher
+- A philosopher may eat if he can pick up the two chopsticks adjacent to him
+- One chopstick may be picked up by any one of its adjacent followers but not both
+
+<table>
+  <tr>
+    <td>
+      For 4 People
+    </td>
+    <td>
+      For 1 People
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <pre>
+    Wait(chopstick[i])
+    Wait(chopstick[(i+1)%k])
+    //eat
+    Signal(chopstick[i])
+    Signal(chopstick[(i+1)%k])
+    </pre>
+    </td>
+    <td>
+    <pre>
+    Wait(chopstick[(i+1)%k])
+    Wait(chopstick[i])
+    //eat
+    Signal(chopstick[i])
+    Signal(chopstick[(i+1)%k])
+    </pre>
+    </td>
+  </tr>
+</table>
+
+---
+---
