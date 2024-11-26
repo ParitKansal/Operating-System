@@ -1,4 +1,4 @@
- 
+
 
 # Operating System
 ---
@@ -233,7 +233,7 @@ A race condition is an undesirable situation, it occurs when the final result of
 2. **Progress** - of no process is in critical section and at least 1 process wants to enter or exess critical section then it should be allowed
 3. **Bounded Waiting** - Waiting of processes should be Bounded
 
-### Using Lock
+### **Using Lock**
 
 <table>
 <tr>
@@ -268,7 +268,7 @@ lock = False;
 - **Mutual Exclusion** - No 
 - **Progress** - Yes
 
-### Using Turn
+### **Using Turn**
 
 <table>
 <tr>
@@ -303,8 +303,11 @@ turn = True;
 - **Bounded Waiting** - Yes
 
 
-### Peterson's Solution
+### **Peterson's Solution**
 <table>
+    <tr>
+     <td colspan = 2>Flag[0] = False, Flag[1] = False</td>
+    </tr>
     <tr>
         <th>
             P0
@@ -312,9 +315,6 @@ turn = True;
         <th>
             P1
         </th>
-    </tr>
-    <tr>
-     <td colspan = 2>Flag[0] = False, Flag[1] = False</td>
     </tr>
     <tr>
         <td>
@@ -342,4 +342,121 @@ Flag[1] = False;
 - **Progress** - Yes
 - **Bounded Waiting** - Yes
 
+### **Synchronization Hardware**
+### TestAnsSet()
+- Return the current flag value and set it's value to True
+```
+bool TestAnsSet(bool* flag){
+    bool temp = *flag;
+    *flag = True;
+    return temp;
+}
+```
+
+<table>
+<tr>
+<td colspan = 2>Flag[0] = False, Flag[1] = False</td>
+</tr>       
+<tr>
+<th>
+P0
+</th>
+<th>
+P1
+</th>
+</tr>
+<tr>
+<td>
+<pre>
+TestAnsSet(&flag);
+CS;
+Lock = false;
+</pre>
+</td>
+<td>
+<pre>
+TestAnsSet(&flag);
+CS;
+Lock = false;
+</pre>
+</td>
+</tr>
+</table>
+
+
+
+- **Mutual Exclusion** - Yes 
+- **Progress** - Yes
+- **Bounded Waiting** - Yes
+
+### **Semaphore**
+
+#### **Wait() & Signal()**
+<table>
+ <tr>
+ <th>Wait()</th>
+ <th>Signal()</th>
+ </tr>
+ <tr>
+ <td>
+<pre>
+wait(S){
+    while(S <= 0);
+    S--;
+}
+</pre>
+ </td>
+ <td>
+<pre>
+Signal(S){
+    S++;
+}
+</pre>
+ </td>
+ </tr>
+</table>
+
+|binary Semaphore|Counting Semaphore|
+|----------------|------------------|
+|Only 2 values-0/1|Any values       |
+|It is used to implement the solution of critical section problems with multiple processes|It is used to control access to a resource that has multiple instances|
+
+<table>
+ <tr>
+     <td colspan = 2>S = 1</td>
+    </tr>
+    <tr>
+        <th>
+            P0
+        </th>
+        <th>
+            P1
+        </th>
+    </tr>
+    <tr>
+        <td>
+<pre>
+Wait(S);
+CS;
+Signal(S);
+</pre>
+        </td>
+        <td>
+<pre>
+Wait(S);
+CS;
+Signal(S);
+</pre>
+        </td>
+    </tr>
+</table>
+
+**Characteristics of Semaphores**
+- Used to provide mutual exclusion → binary
+- Used to control access to resources → couting
+- Solution using semaphore can lead to have deadlock
+- Solution using semaphore can lead to have starvation
+- Solution using semaphore can be busy waiting solutions
+- Semaphores may lead to a priority inversion
+- Semaphores are machine-independent
 
