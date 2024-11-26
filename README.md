@@ -208,7 +208,7 @@ A system call is a way for programs to interact with the operating system
 ---
 
 
-# Process Synchronization & Deadlock
+# Process Synchronization
 
 #### **Types of Processes**
 1. **Independent** - None communication with any other process
