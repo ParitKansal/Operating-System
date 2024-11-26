@@ -626,59 +626,79 @@ Prevent any of four necessary conditions to occur
     - If a process holding `Ri` wants `Rj` where `j < i`, it must:
         - Release `Ri`.
         - Acquire `Rj` before reacquiring `Ri`.
-     
----
----
-# **Deadlock**
-- If two or more processes are waiting for such an event which is never going to occur
-
-
-### **Necessary Conditions for Deadlock**:
-
-Deadlock can occur only when all the following conditions are satisfied simultaneously:
-
-1. **Mutual Exclusion**: If one process is using a resource, other processes cannot use it at the same time.
-2. **Hold and Wait**:  A process must be holding at least one resource and waiting to acquire additional resources that are currently held by other processes.
-3. **No Preemption**:  Resources cannot be forcibly taken away from a process.
-4. **Circular Wait**:  A set of processes must exist such that each process is waiting for a resource held by the next process in the chain, forming a circular chain.
-
-### **Recovery From Deadlock**
-1. Make Sure that deadlock never occur:
-    a) Prevent the system from deadlock
-    b) avoid deadlock
-2. Allow deadlock, detect and recover
-3. Pretend that there is no any deadlock
-
-### **Deadlock Prevention**
-Prevent any of four necessary conditions to occur
-- **Mutual Exclusion**
-    - Have enough resources to provide simultaneous execution: require more no of resources
-    - Make all processes independent: practically not possible 
-- **Hold & Wait**
-    - all (process resources are available then acquire or else just wait for all. may suffer from starvation.)
-    - If process is trying to acquire a resource which is not available, while holding holding some resources; then process will release the allocated resources.
-- **No Preemption**
-    - Preempt one or more resources from processes
-- **Circular Wait**
-    - All resources have unique sequence numbers, `R1`, `R2`, `R3`, ... `Rn`.
-    - A process holding resource `Ri` can only request another resource `Rj` if **`j > i`**.
-    - If a process holding `Ri` wants `Rj` where `j < i`, it must:
-        - Release `Ri`.
-        - Acquire `Rj` before reacquiring `Ri`.
 
 ### **Deadlock Avoidance**
 - In deadlock avoidance, the OS tries to keep system in safe state
-
-  ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1709957662333/f47a6292-169c-4183-9b21-ded4936213ec.png?auto=compress,format&format=webp)
+    ![](https://cdn.hashnode.com/res/hashnode/image/upload/v1709957662333/f47a6292-169c-4183-9b21-ded4936213ec.png?auto=compress,format&format=webp)
   
----
+### Banker's Algorithm Steps
 
-### **Banker's Algorithm Steps**
-
- ![](https://images.viblo.asia/e6d75353-8d2b-4c52-a5d5-415b03d17b2c.png)
+```
+1.  Let Work and Finish be vectors of length m and n, respectively.Initialize Work = Available and Finish[i] = false for i = 0,1,2,...,n-1.
+2.  Find an indec i such that both
+     a. Finish[i] == false
+     b. Need_i <= Work
+    If ni such i exits, go to step 4.
+3.  Work += Allocation_i
+    Finish[i] = true
+    Go to step 2.
+4.  If finish[i] == true for all i, then the system is in a safe state
+```
 
 **Question**
-    
+
  ![](https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2016/01/safety.png)
 
-    
+### **Deadlock Detection**
+#### **Wait For Graph**
+![https://scanftree.com/operating-system/images/Resource-Allocation-and-Wait-for.jpg](https://scanftree.com/operating-system/images/Resource-Allocation-and-Wait-for.jpg)
+- If all resource categories contains only one instance for each, then the presence of a cycle in the resource-allocation graph indicates the guarantee of a deadlock. 
+- If a resource category contains more than one instance, then the presence of a cycle in the resource-allocation graph indicates the possibility of a deadlock, but does not guarantee one.
+
+#### **Deadlock Detection Algorithm**
+```
+1.  Let Work and Finish be vectors of length m and n respectively
+    Initialize Work= Available. For i=0, 1, ...., n-1, if Request_i = 0, then Finish[i] = true; 
+    otherwise, Finish[i]= false.
+2.  Find an index i such that both
+    a) Finish[i] == false
+    b) Request; <= Work
+    If no such i exists go to step 4.
+3.  Work Work+ Allocation
+    Finish[i]= true
+    Go to Step 2.
+4.  If Finish[i]== false for some i, 0<=i<n,
+    then the system is in a deadlocked state.
+    Moreover, if Finish[i]==false the process P, is deadlocked
+```
+**Detection-Algorithm Usage**
+1. Do deadlock detection after every resource allocation
+2. Do deadlock detection only when there is some clue
+
+### **Recovery From Deadlock**
+There are three basic approaches to recovery from deadlock:
+- Inform the system operator and allow him/her to take manual intervention
+- Terminate one or more processes involved in the deadlock
+- Preempt resources.
+
+### Process Terminatio
+- Terminate all processes involved in the deadlock
+- Terminate processes one by one until the deadlock is broken
+
+Many factors that can go into deciding which processes to terminate next:
+- Process priorities.
+- How long the process has been running, and how close it is to finishing.
+- How many and what type of resources is the process holding
+- How many more resources does the process need to complete
+- How many processes will need to be terminated
+- Whether the process is interactive or batch
+
+### Resource Preemption
+Important issues to be addressed when preempting resources to relieve deadlock:
+- Selecting a victim
+- Rollback
+- Starvation
+
+---
+---
+
