@@ -589,3 +589,43 @@ Reader(){
 
 ---
 ---
+
+# **Deadlock**
+- If two or more processes are waiting for such an event which is never going to occur
+
+
+### **Necessary Conditions for Deadlock**:
+
+Deadlock can occur only when all the following conditions are satisfied simultaneously:
+
+1. **Mutual Exclusion**: If one process is using a resource, other processes cannot use it at the same time.
+2. **Hold and Wait**:  A process must be holding at least one resource and waiting to acquire additional resources that are currently held by other processes.
+3. **No Preemption**:  Resources cannot be forcibly taken away from a process.
+4. **Circular Wait**:  A set of processes must exist such that each process is waiting for a resource held by the next process in the chain, forming a circular chain.
+
+### **Recovery From Deadlock**
+1. Make Sure that deadlock never occur:
+    a) Prevent the system from deadlock
+    b) avoid deadlock
+2. Allow deadlock, detect and recover
+3. Pretend that there is no any deadlock
+
+### **Deadlock Prevention**
+Prevent any of four necessary conditions to occur
+- **Mutual Exclusion**
+    - Have enough resources to provide simultaneous execution: require more no of resources
+    - Make all processes independent: practically not possible 
+- **Hold & Wait**
+    - all (process resources are available then acquire or else just wait for all. may suffer from starvation.)
+    - If process is trying to acquire a resource which is not available, while holding holding some resources; then process will release the allocated resources.
+- **No Preemption**
+    - Preempt one or more resources from processes
+- **Circular Wait**
+    - All resources have unique sequence numbers, `R1`, `R2`, `R3`, ... `Rn`.
+    - A process holding resource `Ri` can only request another resource `Rj` if **`j > i`**.
+    - If a process holding `Ri` wants `Rj` where `j < i`, it must:
+        - Release `Ri`.
+        - Acquire `Rj` before reacquiring `Ri`.
+     
+---
+---
