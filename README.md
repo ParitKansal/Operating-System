@@ -1,3 +1,4 @@
+
 # Operating System
 ---
 ---
@@ -751,11 +752,6 @@ The main memory is not pre-divided into fixed-sized partitions. When a process a
 - No of enteries in the page table = No of pages in process
 - Size of Page table = No of enteries in the page table * 1 entry size = No of pages in process * 1 entry size
 
-
-### Translation Lookaside Buffer (TLB)
-
-A Translation Lookaside Buffer (TLB) is a hardware component used to reduce the time required to access a user memory location. It stores a small number of page table entries that the CPU accesses frequently, allowing for faster translation of virtual addresses to physical addresses and enabling quicker memory access.
-
 ### **Time Required in Paging**
 
 $\text{Effective Memory acess Time} = \text{Page table acess time} + \text{Main Memory acess Time}$
@@ -768,3 +764,55 @@ $\text{Effective Memory acess Time} = \text{Page table acess time} + \text{Main 
 
 **If TLB is Present**
 - $\text{Effective Memory acess Time} = H \times (\text{TLB Access Time} + \text{Main Memory Access Time}) + (1 - H) \times (\text{Page Table Access Time} + \text{Main Memory Access Time})$
+
+### Translation Lookaside Buffer (TLB)
+
+A Translation Lookaside Buffer (TLB) is a hardware component used to reduce the time required to access a user memory location. It stores a small number of page table entries that the CPU accesses frequently, allowing for faster translation of virtual addresses to physical addresses and enabling quicker memory access.
+
+#### Types of Mapping
+- Direct Mapping
+- Set associative Mapping
+- Fully associative Mapping
+
+ 
+<table>
+  <tr>
+    <td colspan = 3>
+      Logical address
+    </td>
+  </tr>
+  <tr>
+    <td colspan = 2>
+      Page Number
+    </td>
+    <td>
+      Byte Number
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Tag
+    </td>
+    <td>
+      TLB Set Number
+    </td>
+    <td>
+      Byte Number
+    </td>
+  </tr>
+</table>
+
+
+- Bits For Logical Address = Bits for page no + Bits for Byte no
+- Bits for page no = Bits for Tag + Bits for TLB Set Number
+- Bits for page no = log(No of Pages in Process)
+- Bits for byte no = log(Page Size)
+- Bits for TLB Set Number = log(Number of Sets in TLB)
+- Number of sets in TLB = No of Entries in TLB / K 
+- Total Tag Directory Size = Number of Entries in TLB * Tag Size = Number of Sets in TLB * k * Tag SizeBits for page no = log(No of Pages in Process)
+- Bits for frame no = log(No of frames in Pysical Memory)
+- No of enteries in the page table = No of pages in process
+- Size of Page table = No of enteries in the page table * 1 entry size = No of pages in process * 1 entry size
+
+### Multi Level Paging
+![](https://i.ibb.co/jygvPG5/Multi-Level-Paging.png)
