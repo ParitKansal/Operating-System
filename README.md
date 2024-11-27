@@ -872,4 +872,23 @@ A Translation Lookaside Buffer (TLB) is a hardware component used to reduce the 
   ![](https://images.javatpoint.com/operating-system/images/os-segmented-paging2.png)
 
 ---
+# File System
+
+**File**: A file is a named collection of related information that is recorded on secondary storage.
+
+**File Attributes**: Name, Extension, Size, Date, Author, Created, Modified, Accessed etc
+
+### File System
+Module of OS which manages, controls and organizes files and related structures
+
+**Types of File Systems**
+- FAT32 → windows
+- NTFS → windows
+- HFS+ → MAC
+- Ext2/Ext3/Ext4 → Linux
+- Swap → used for swap in & swap out
+
+### File Directory Structure
+![](https://i.ibb.co/HNWk47t/Directory-Types.png)
 ---
+
