@@ -872,6 +872,9 @@ A Translation Lookaside Buffer (TLB) is a hardware component used to reduce the 
   ![](https://images.javatpoint.com/operating-system/images/os-segmented-paging2.png)
 
 ---
+---
+
+
 # File System
 
 **File**: A file is a named collection of related information that is recorded on secondary storage.
@@ -890,5 +893,56 @@ Module of OS which manages, controls and organizes files and related structures
 
 ### File Directory Structure
 ![](https://i.ibb.co/HNWk47t/Directory-Types.png)
----
 
+## Disk Partiotioning
+- **Low Level(Physical)** - Tracks and sectors
+- **High Level(Logical)** - Blocks
+    - **Primary** - Used to store OS and User files
+    - **Extended** - Used to store User files only
+
+### Free space Management
+- Free List - Linked List of free blocks
+- Bitmap Methos - make an hash array of 0/1 to store if the block is free or not
+
+## File Allocation Methods 
+- ### **Contiguous Allocation**
+    |File Name|Start Block Number|Number Of Blocks|
+    |---------|------------------|----------------|
+    |...|...|...|
+    |...|...|...|
+- ### **Linked Allocation**
+    |File Name|Start Block Number|Last Block Number|
+    |---------|------------------|-----------------|
+    |...|...|...|
+    |...|...|...|
+
+- ### **Indexed Allocation**
+    |File Name|Index Block Number|
+    |---------|------------------|
+    |...|...|
+    |...|...| 
+    - **Single Level Indexed Allocation**
+    - **Two Level Indexed Allocation**
+
+### Master Boot Record
+A master boot record (MBR) is a special type of boot sector at the very beginning of partitioned computer mass storage devices.
+- Contains the information regarding how and where the OS is located in the hard disk so that it can be booted in the RAM.
+
+## Disk Scheduling
+- Done by operating systems to schedule I/O requests arriving for the disk
+- using this we will try to Save seek limp
+
+### Disk Scheduling Algorithms
+![](https://i.ibb.co/D8LWrWk/example.png)
+- **FCFS (First Come First Serve)**
+    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608201201/fcfs3.jpg)
+- **SSTF (Shortest Seek Time First)**
+    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608201702/sstf1.jpg)
+- **Scan**
+    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202008/scan4.jpg)
+- **C-Scan (Circular-Scan)**
+    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202230/cscan1.jpg)
+- **Look**
+    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202613/look1.jpg)
+- **C-Look (Circular-Look)**
+    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202846/clook1.jpg)
