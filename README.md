@@ -1,3 +1,16 @@
+  <table>
+  <tr>
+      <td colspan = 2><b>Logical address</b>
+      </td>
+  </tr>
+  <tr>
+      <td>page number
+      </td>
+      <td>byte number
+      </td>
+  </tr>
+  </table>
+
 # Operating System
 ---
 ---
@@ -701,7 +714,6 @@ Important issues to be addressed when preempting resources to relieve deadlock:
 
 ---
 ---
-
 # **Memory Management**
 
 ### Functions of Memory Management
@@ -739,3 +751,15 @@ The main memory is not pre-divided into fixed-sized partitions. When a process a
 
 **Compaction**: Compaction is a memory management technique used to collect all allocated processes to one side of memory, creating a single large block of free space on the other side.
 
+### **Paging**
+- Process is divided in equal size of pages
+- Physical memory is divided in same equal size of frames
+- Pages are scattered in frames
+
+![](https://i.ibb.co/Kh6PYyV/PAging.png)
+
+- Bits for page no  =   log(No of Pages in Process)
+- Bits for byte no  =   log(Page Size)
+- Bits for frame no =   log(No of frames in Pysical Memory)
+- No of enteries in the page table = No of pages in process
+- Size of Page table = No of enteries in the page table * 1 entry size = No of pages in process * 1 entry size
