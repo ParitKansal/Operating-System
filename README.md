@@ -934,15 +934,27 @@ A master boot record (MBR) is a special type of boot sector at the very beginnin
 
 ### Disk Scheduling Algorithms
 ![](https://i.ibb.co/D8LWrWk/example.png)
+
 - **FCFS (First Come First Serve)**
-    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608201201/fcfs3.jpg)
+
+  ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608201201/fcfs3.jpg)
+  
 - **SSTF (Shortest Seek Time First)**
-    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608201702/sstf1.jpg)
+
+  ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608201702/sstf1.jpg)
+  
 - **Scan**
-    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202008/scan4.jpg)
+
+  ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202008/scan4.jpg)
+  
 - **C-Scan (Circular-Scan)**
-    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202230/cscan1.jpg)
+
+  ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202230/cscan1.jpg)
+  
 - **Look**
-    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202613/look1.jpg)
+
+  ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202613/look1.jpg)
+  
 - **C-Look (Circular-Look)**
-    ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202846/clook1.jpg)
+
+  ![](https://media.geeksforgeeks.org/wp-content/uploads/20200608202846/clook1.jpg)
