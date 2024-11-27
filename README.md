@@ -822,3 +822,7 @@ A Translation Lookaside Buffer (TLB) is a hardware component used to reduce the 
 - Segments are scattered in physical memory
 - Segments Can be of Variable sizes
     ![](https://media.geeksforgeeks.org/wp-content/uploads/20230703104323/ezgifcom-gif-maker-(15).webp)
+
+---
+---
+
