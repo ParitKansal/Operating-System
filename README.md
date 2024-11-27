@@ -1,29 +1,16 @@
-  <table>
-  <tr>
-      <td colspan = 2><b>Logical address</b>
-      </td>
-  </tr>
-  <tr>
-      <td>page number
-      </td>
-      <td>byte number
-      </td>
-  </tr>
-  </table>
-
 # Operating System
 ---
 ---
 # **Introduction**
 
-### What is OS
+## What is OS
 - Software abstracting hardware
 - Interface between user and hardware
 - Set of utilities to simplify application development/execution
 Control program
 - Acts like a government
 
-### Services of Operating Systems
+## Services of Operating Systems
 - User Interface
 - Program Execution
 - I/O Operation
@@ -34,7 +21,7 @@ Control program
 - Accounting
 - Protection & Security
 
-### Goals of Operating Systems
+## Goals of Operating Systems
 - Convenience - User-friendly
 - Efficiency
 - Portability
@@ -42,17 +29,17 @@ Control program
 - Scalability - can increase the no of users
 - Robustness - can handle unexpected errors
 
-### Parts of OS
+## Parts of OS
 - **Kernel** - ALL Functionalities of OS
 - **Shell** - Interdace - GUI or CLI
 
-### System Call
+## System Call
 A system call is a way for programs to interact with the operating system
 
-### Dual Mode of Operations of OS
+## Dual Mode of Operations of OS
 ![](https://images.javatpoint.com/operating-system/images/dual-mode-operations-in-operating-system3.png)
 
-### Types of Operating Systems
+## Types of Operating Systems
 - **Uni-programming OS** - One single process reside in Main memory 
 - **Multi-programming OS** - Multiple processes reside in Main memory
   - **Non-Preemtive** - A process runs in cpu till it wants to be
@@ -725,7 +712,7 @@ Important issues to be addressed when preempting resources to relieve deadlock:
 - Maximum Utilization of space
 - Ability to run larger programs with limited space
 
-### **Techniques of Memory Management**
+## **Techniques of Memory Management**
 - **Contiguous**: Entire process should be stored on consecutive memory locations
     - **Fixed Partition**: The main memory is devided into fixed no. of partitions and each partition can be used to accomodate  max. one process.
     - **Variable Partition**
@@ -733,8 +720,8 @@ Important issues to be addressed when preempting resources to relieve deadlock:
     - **Paging**
     - **Segmentation**
 
-### **Fixed Partition**
-#### **Partition Allocation Policy**
+## **Fixed Partition**
+### **Partition Allocation Policy**
 - **First Fit**: Allocates the first available memory block that is large enough for the process.
 - **Best Fit**: Allocates the smallest available memory block that is large enough for the process.
 - **Worst Fit**: Allocates the largest available memory block to leave the largest possible leftover space.
@@ -742,7 +729,7 @@ Important issues to be addressed when preempting resources to relieve deadlock:
 
 **Internal Fragmentation:** Occurs when a memory block allocated to a process is larger than the process's actual requirement, leaving unused space within the block.
  
-### **Variable Partition**
+## **Variable Partition**
 The main memory is not pre-divided into fixed-sized partitions. When a process arrives, a partition is dynamically created with a size equal to the process's size.
 
 **No Internal Fragmentation**: Since the partition size matches the process size, no extra space is wasted within the allocated block.
@@ -751,7 +738,7 @@ The main memory is not pre-divided into fixed-sized partitions. When a process a
 
 **Compaction**: Compaction is a memory management technique used to collect all allocated processes to one side of memory, creating a single large block of free space on the other side.
 
-### **Paging**
+## **Paging**
 - Process is divided in equal size of pages
 - Physical memory is divided in same equal size of frames
 - Pages are scattered in frames
@@ -763,3 +750,21 @@ The main memory is not pre-divided into fixed-sized partitions. When a process a
 - Bits for frame no =   log(No of frames in Pysical Memory)
 - No of enteries in the page table = No of pages in process
 - Size of Page table = No of enteries in the page table * 1 entry size = No of pages in process * 1 entry size
+
+
+### Translation Lookaside Buffer (TLB)
+
+A Translation Lookaside Buffer (TLB) is a hardware component used to reduce the time required to access a user memory location. It stores a small number of page table entries that the CPU accesses frequently, allowing for faster translation of virtual addresses to physical addresses and enabling quicker memory access.
+
+### **Time Required in Paging**
+
+$\text{Effective Memory acess Time} = \text{Page table acess time} + \text{Main Memory acess Time}$
+
+**If Page Table in Main Memory**
+- $\text{Effective Memory acess Time} = 2 \times \text{Main Memory Access Time}$
+
+**If Page Table in Register**
+- $\text{Effective Memory acess Time} = \text{Main Memory Access Time}$
+
+**If TLB is Present**
+- $\text{Effective Memory acess Time} = H \times (\text{TLB Access Time} + \text{Main Memory Access Time}) + (1 - H) \times (\text{Page Table Access Time} + \text{Main Memory Access Time})$
