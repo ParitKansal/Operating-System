@@ -866,3 +866,10 @@ A Translation Lookaside Buffer (TLB) is a hardware component used to reduce the 
     ![](https://i.ibb.co/G3N8cyz/Hashed-Page-Table.png)
 
 
+## Segmented Paging
+- Pure segmentation is not very popular and not being used in many of the operating systems.
+- Segmentation can be combined with Paging to get the best features out of both the techniques.
+  ![](https://images.javatpoint.com/operating-system/images/os-segmented-paging2.png)
+
+---
+---
