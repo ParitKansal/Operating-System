@@ -825,4 +825,44 @@ A Translation Lookaside Buffer (TLB) is a hardware component used to reduce the 
 
 ---
 ---
+# Virtual Memory
+- Feature of OS
+- Enables to run larger process with smaller available memory
+
+### **Demand Paging**
+
+- Pages are brought into memory only when the CPU demands them.
+- When the CPU demands a page that is not in main memory, a **page fault** occurs.
+- **Page Fault Handling**:
+    - The operating system identifies the missing page in secondary memory.
+    - The page is brought from secondary memory to main memory.
+    - If there is no free space in main memory: A page replacement algorithm is used to remove an existing page.
+    - The page table is updated to reflect the change.
+    - The CPU resumes its execution.
+
+
+- Extra bits in Entry in Page table contains-
+    - Valid bits
+    - Modified bit
+
+## Page Replacement Algorithm
+- **First In First Out**: replace that page which brought to memory first.
+- **Last In First Out**
+- **Optimal Policy**: replace page which is not (never) going to be refered in near future
+- **Least Recently Used**
+- **Least Frequently Used**: replace page which has been used minimum number of times
+- **Most Frequently Used**: replace page which has been used maximum number of times
+- **Second Chance Replacement**:
+    - When we bring a new page into main memory (MM), **R = 0** (indicating the page has not been used yet).  
+    - When the page is accessed (referred), **R = 1**.  
+    - Pages are replaced using the **FIFO** algorithm, but only if **R == 0** (i.e., the page has not been recently used).  
+    - If a page is given a **second chance** or **page fault** taken place, its **R value is reset to 0**.
+
+### **Types of Page Tables**
+- **Hierarchical**: 
+- **Inverted**
+    ![](https://www.baeldung.com/wp-content/uploads/sites/4/2022/12/Inverted-pagetable.drawio-2.png)
+- **Hashed**    
+    ![](https://i.ibb.co/G3N8cyz/Hashed-Page-Table.png)
+
 
