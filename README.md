@@ -702,3 +702,40 @@ Important issues to be addressed when preempting resources to relieve deadlock:
 ---
 ---
 
+# **Memory Management**
+
+### Functions of Memory Management
+- Memory allocation
+- Memory deallocation
+- Memory protection
+
+### Goals of Memory Management
+- Maximum Utilization of space
+- Ability to run larger programs with limited space
+
+### **Techniques of Memory Management**
+- **Contiguous**: Entire process should be stored on consecutive memory locations
+    - **Fixed Partition**: The main memory is devided into fixed no. of partitions and each partition can be used to accomodate  max. one process.
+    - **Variable Partition**
+- **Non Contiguous**
+    - **Paging**
+    - **Segmentation**
+
+### **Fixed Partition**
+#### **Partition Allocation Policy**
+- **First Fit**: Allocates the first available memory block that is large enough for the process.
+- **Best Fit**: Allocates the smallest available memory block that is large enough for the process.
+- **Worst Fit**: Allocates the largest available memory block to leave the largest possible leftover space.
+- **Next Fit**: Similar to First Fit but starts searching from the last allocated position instead of the beginning of the memory.
+
+**Internal Fragmentation:** Occurs when a memory block allocated to a process is larger than the process's actual requirement, leaving unused space within the block.
+ 
+### **Variable Partition**
+The main memory is not pre-divided into fixed-sized partitions. When a process arrives, a partition is dynamically created with a size equal to the process's size.
+
+**No Internal Fragmentation**: Since the partition size matches the process size, no extra space is wasted within the allocated block.
+
+**External Fragmentation**: External fragmentation occurs when there is enough total memory space to satisfy a process's requirements, but the available memory is not contiguous (i.e., it is scattered in small, non-adjacent blocks).
+
+**Compaction**: Compaction is a memory management technique used to collect all allocated processes to one side of memory, creating a single large block of free space on the other side.
+
