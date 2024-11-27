@@ -32,7 +32,7 @@ Control program
 
 ## Parts of OS
 - **Kernel** - ALL Functionalities of OS
-- **Shell** - Interdace - GUI or CLI
+- **Shell** - Interface - GUI or CLI
 
 ## System Call
 A system call is a way for programs to interact with the operating system
@@ -43,7 +43,7 @@ A system call is a way for programs to interact with the operating system
 ## Types of Operating Systems
 - **Uni-programming OS** - One single process reside in Main memory 
 - **Multi-programming OS** - Multiple processes reside in Main memory
-  - **Non-Preemtive** - A process runs in cpu till it wants to be
+  - **Non-Preemtive** - A process runs in CPU till it wants to be
   - **Preemtive** - A process can be forcefully taken out of the CPU
 - **Multi-tasking** - Extension of multi-programming OS in which processes execute in round-robin fashion.
 - **Multi-Processing OS** - Multiple CPUs
@@ -89,7 +89,7 @@ A system call is a way for programs to interact with the operating system
 
 ### Context Switch
 **Context Switch** = Context save + Context Load
-- stop a running proces & run another process
+- stop a running process & run another process
 
 ### Process States
 ![](https://i.ibb.co/WzSt5zm/Process-States-States.png)
@@ -117,7 +117,7 @@ A system call is a way for programs to interact with the operating system
 1. **Arrival Time (AT):** The time at which the process arrives in the system.
 2. **Burst Time (BT):** The amount of time for which the process runs on the CPU.
 3. **Completion Time (CT):** The time at which the process completes (exit time).
-4. **Turnaround Time (TAT):** Time from arrival to completion.**Formula:** $\text{TAT} = \text{CT} - \text{AT}$
+4. **Turnaround Time (TAT):** Time from arrival to completion. **Formula:** $\text{TAT} = \text{CT} - \text{AT}$
 5. **Waiting Time (WT):** The time the process spends waiting in the ready queue. **Formula:** $\text{WT} = \text{TAT} - \text{BT}$
 6. **Response Time (RT):**  The amount of time from the arrival of a process until it gets the CPU for the first time.
 7. **Scheduling Length (L):**  The total time required to complete all processes.  **Formula:**  $L = \max(\text{CT}) - \min(\text{AT})$
@@ -125,27 +125,27 @@ A system call is a way for programs to interact with the operating system
 
 ### **First Come First Serve (FCFS)**
 - **Criteria** - Arrival Time
-- **Tie reaker** - Smaller process id
+- **TieBreaker** - Smaller process id
 - **Type** - Non-Preemptive
 
-### **Sortest Job First (SJF)**
+### **Shortest Job First (SJF)**
 - **Criteria** - Burst Time
-- **Tie reaker** - FCFS
+- **TieBreaker** - FCFS
 - **Type** - Non-Preemptive
 
-### **Sortest Remaining Time First (SRTF)**
+### **Shortest Remaining Time First (SRTF)**
 - **Criteria** - Remaining Time
-- **Tie reaker** - FCFS
+- **TieBreaker** - FCFS
 - **Type** - Preemptive
 
 ### **Highest Response Ration Next**
 - **Criteria** - Highest Response Ration = 1 + WT/BT
-- **Tie reaker** - Burst Time
+- **TieBreaker** - Burst Time
 - **Type** - Non-Preemptive
 
 ### **Priority Based Scheduling**
 - **Criteria** - Priority
-- **Tie reaker** - FCFS
+- **TieBreaker** - FCFS
 - **Type** - Preemptive and Non-Preemptive
 
 ### **Round-Robin Scheduling**
@@ -229,7 +229,7 @@ A race condition is an undesirable situation, it occurs when the final result of
 
 #### **Requirements of Critical Section problem solution**:
 1. **Mutual Exclusion** - If one process use that critical section then other process can not use that critical section
-2. **Progress** - of no process is in critical section and at least 1 process wants to enter or exess critical section then it should be allowed
+2. **Progress** - of no process is in critical section and at least 1 process wants to enter orexcess critical section then it should be allowed
 3. **Bounded Waiting** - Waiting of processes should be Bounded
 
 ### **Using Lock**
@@ -342,10 +342,10 @@ Flag[1] = False;
 - **Bounded Waiting** - Yes
 
 ### **Synchronization Hardware**
-### TestAnsSet()
+### TestAndSet()
 - Return the current flag value and set it's value to True
 ```
-bool TestAnsSet(bool* flag){
+bool TestAndSet(bool* flag){
     bool temp = *flag;
     *flag = True;
     return temp;
@@ -367,14 +367,14 @@ P1
 <tr>
 <td>
 <pre>
-TestAnsSet(&flag);
+TestAndSet(&flag);
 CS;
 Lock = false;
 </pre>
 </td>
 <td>
 <pre>
-TestAnsSet(&flag);
+TestAndSet(&flag);
 CS;
 Lock = false;
 </pre>
@@ -471,7 +471,7 @@ Signal(S);
 
 #### **Variables**:
 - **Mutex**: Binary Semaphore to take lock on buffer (Mutual Exclusion)
-- **Full**: Counting Semaphore to to denote the number of Foccupied slots in buffer
+- **Full**: Counting Semaphore to to denote the number of occupied slots in buffer
 - **Empty**: Counting Semaphore to denote the number of empty slots in buffer
 
 #### **Initialization**
@@ -635,7 +635,7 @@ Prevent any of four necessary conditions to occur
 ### Banker's Algorithm Steps
 
 ```
-1.  Let Work and Finish be vectors of length m and n, respectively.Initialize Work = Available and Finish[i] = false for i = 0,1,2,...,n-1.
+1.  Let Work and Finish be vectors of length m and n, respectively. Initialize Work = Available and Finish[i] = false for i = 0,1,2,...,n-1.
 2.  Find an indec i such that both
      a. Finish[i] == false
      b. Need_i <= Work
@@ -715,7 +715,7 @@ Important issues to be addressed when preempting resources to relieve deadlock:
 
 ## **Techniques of Memory Management**
 - **Contiguous**: Entire process should be stored on consecutive memory locations
-    - **Fixed Partition**: The main memory is devided into fixed no. of partitions and each partition can be used to accomodate  max. one process.
+    - **Fixed Partition**: The main memory is divided into fixed no. of partitions and each partition can be used to accommodate  max. one process.
     - **Variable Partition**
 - **Non Contiguous**
     - **Paging**
@@ -748,22 +748,22 @@ The main memory is not pre-divided into fixed-sized partitions. When a process a
 
 - Bits for page no  =   log(No of Pages in Process)
 - Bits for byte no  =   log(Page Size)
-- Bits for frame no =   log(No of frames in Pysical Memory)
-- No of enteries in the page table = No of pages in process
-- Size of Page table = No of enteries in the page table * 1 entry size = No of pages in process * 1 entry size
+- Bits for frame no =   log(No of frames in Physical Memory)
+- No of entries in the page table = No of pages in process
+- Size of Page table = No of entries in the page table * 1 entry size = No of pages in process * 1 entry size
 
 ### **Time Required in Paging**
 
-$\text{Effective Memory acess Time} = \text{Page table acess time} + \text{Main Memory acess Time}$
+$\text{Effective Memory access Time} = \text{Page table access time} + \text{Main Memory access Time}$
 
 **If Page Table in Main Memory**
-- $\text{Effective Memory acess Time} = 2 \times \text{Main Memory Access Time}$
+- $\text{Effective Memory access Time} = 2 \times \text{Main Memory Access Time}$
 
 **If Page Table in Register**
-- $\text{Effective Memory acess Time} = \text{Main Memory Access Time}$
+- $\text{Effective Memory access Time} = \text{Main Memory Access Time}$
 
 **If TLB is Present**
-- $\text{Effective Memory acess Time} = H \times (\text{TLB Access Time} + \text{Main Memory Access Time}) + (1 - H) \times (\text{Page Table Access Time} + \text{Main Memory Access Time})$
+- $\text{Effective Memory access Time} = H \times (\text{TLB Access Time} + \text{Main Memory Access Time}) + (1 - H) \times (\text{Page Table Access Time} + \text{Main Memory Access Time})$
 
 ### Translation Lookaside Buffer (TLB)
 
@@ -809,10 +809,10 @@ A Translation Lookaside Buffer (TLB) is a hardware component used to reduce the 
 - Bits for byte no = log(Page Size)
 - Bits for TLB Set Number = log(Number of Sets in TLB)
 - Number of sets in TLB = No of Entries in TLB / K 
-- Total Tag Directory Size = Number of Entries in TLB * Tag Size = Number of Sets in TLB * k * Tag SizeBits for page no = log(No of Pages in Process)
-- Bits for frame no = log(No of frames in Pysical Memory)
-- No of enteries in the page table = No of pages in process
-- Size of Page table = No of enteries in the page table * 1 entry size = No of pages in process * 1 entry size
+- Total Tag Directory Size = Number of Entries in TLB * Tag Size = Number of Sets in TLB * k * Tag Size = log(No of Pages in Process)
+- Bits for frame no = log(No of frames in Physical Memory)
+- No of entries in the page table = No of pages in process
+- Size of Page table = No of entries in the page table * 1 entry size = No of pages in process * 1 entry size
 
 ### Multi Level Paging
 ![](https://i.ibb.co/jygvPG5/Multi-Level-Paging.png)
@@ -848,7 +848,7 @@ A Translation Lookaside Buffer (TLB) is a hardware component used to reduce the 
 ## Page Replacement Algorithm
 - **First In First Out**: replace that page which brought to memory first.
 - **Last In First Out**
-- **Optimal Policy**: replace page which is not (never) going to be refered in near future
+- **Optimal Policy**: replace page which is not (never) going to be referred in near future
 - **Least Recently Used**
 - **Least Frequently Used**: replace page which has been used minimum number of times
 - **Most Frequently Used**: replace page which has been used maximum number of times
@@ -879,7 +879,7 @@ A Translation Lookaside Buffer (TLB) is a hardware component used to reduce the 
 
 **File**: A file is a named collection of related information that is recorded on secondary storage.
 
-**File Attributes**: Name, Extension, Size, Date, Author, Created, Modified, Accessed etc
+**File Attributes**: Name, Extension, Size, Date, Author, Created, Modified, Accessed etc.
 
 ### File System
 Module of OS which manages, controls and organizes files and related structures
@@ -894,7 +894,7 @@ Module of OS which manages, controls and organizes files and related structures
 ### File Directory Structure
 ![](https://i.ibb.co/HNWk47t/Directory-Types.png)
 
-## Disk Partiotioning
+## Disk Partitioning
 - **Low Level(Physical)** - Tracks and sectors
 - **High Level(Logical)** - Blocks
     - **Primary** - Used to store OS and User files
